@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Ammatty ✨</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      background: linear-gradient(135deg, #fff5f7 0%, #ffe6ea 50%, #ffd6e0 100%);
+      color: #5c0014;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Enhanced Doodle Elements */
+    .doodle {
+      position: fixed;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.1;
+      animation: floatDoodle 25s infinite linear;
+      filter: drop-shadow(0 3px 5px rgba(179, 0, 36, 0.15));
+    }
+
+    .doodle.heart { font-size: 3.5rem; color: #ff3366; }
+    .doodle.star { font-size: 3rem; color: #ff85a1; }
+    .doodle.flower { font-size: 3.2rem; color: #ff3366; }
+    .doodle.cherry { font-size: 2.5rem; color: #b30024; }
+
+    @keyframes floatDoodle {
+      0% { transform: translateY(100vh) rotate(0deg) scale(1); }
+      100% { transform: translateY(-100px) rotate(360deg) scale(1.05); }
+    }
+
+    /* Floating Love & Bows Background */
+    .floating-heart {
+      position: fixed;
+      font-size: 2rem;
+      opacity: 0.15;
+      z-index: -1;
+      pointer-events: none;
+      animation: floatLove 20s infinite linear;
+    }
+
+    .floating-bow {
+      position: fixed;
+      font-size: 2.5rem;
+      opacity: 0.12;
+      z-index: -1;
+      pointer-events: none;
+      animation: floatBow 25s infinite linear;
+    }
+
+    @keyframes floatLove {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(1);
+        opacity: 0;
+      }
+      10% { opacity: 0.15; }
+      90% { opacity: 0.15; }
+      100% {
+        transform: translateY(-100px) rotate(720deg) scale(0.8);
+        opacity: 0;
+      }
+    }
+
+    @keyframes floatBow {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg) scale(1);
+        opacity: 0;
+      }
+      10% { opacity: 0.12; }
+      90% { opacity: 0.12; }
+      100% {
+        transform: translateY(-100px) translateX(100px) rotate(540deg) scale(0.9);
+        opacity: 0;
+      }
+    }
+
+    /* Page System */
+    .page {
+      min-height: 100vh;
+      display: none;
+      padding: 60px 40px;
+      position: relative;
+    }
+
+    .page.active {
+      display: block;
+      animation: luxuryFadeIn 0.8s ease-out;
+    }
+
+    @keyframes luxuryFadeIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* FIXED: Balanced Masonry Grid - No blank sides */
+    .pinterest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Enhanced Polaroid Cards */
+    .polaroid-card {
+      background: white;
+      padding: 25px 25px 40px 25px;
+      border-radius: 16px;
+      box-shadow:
+        0 25px 50px rgba(179, 0, 36, 0.2),
+        0 12px 25px rgba(179, 0, 36, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.4);
+      transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transform: rotate(var(--rotate, 0deg));
+      background: linear-gradient(145deg, #ffffff, #fffafa);
+      backdrop-filter: blur(5px);
+      height: fit-content;
+    }
+
+    /* Different rotation for balanced look - NO BLANK SIDES */
+    .polaroid-card:nth-child(3n+1) { --rotate: -1.5deg; }
+    .polaroid-card:nth-child(3n+2) { --rotate: 1.2deg; }
+    .polaroid-card:nth-child(3n+3) { --rotate: 1.8deg; }
+
+    .polaroid-card:hover {
+      transform: rotate(0deg) translateY(-25px) scale(1.06);
+      box-shadow:
+        0 40px 80px rgba(179, 0, 36, 0.3),
+        0 20px 45px rgba(179, 0, 36, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 0 0 2px rgba(255, 255, 255, 0.5);
+    }
+
+    .polaroid-image {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      filter: sepia(0.08) brightness(1.06) contrast(1.05);
+      border: 15px solid white;
+      box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.1),
+        inset 0 0 25px rgba(255, 255, 255, 0.6);
+      transition: all 0.6s ease;
+      background-color: #fff5f7; /* Fallback background color */
+    }
+
+    /* Special class for vertical photos that need contain instead of cover */
+    .polaroid-image.vertical-fit {
+      object-fit: contain;
+      background: linear-gradient(135deg, #ffe6ea, #ffccd5);
+    }
+
+    .polaroid-card:hover .polaroid-image {
+      filter: sepia(0) brightness(1.1) contrast(1.08);
+      transform: scale(1.03);
+      box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15),
+        inset 0 0 30px rgba(255, 255, 255, 0.8);
+    }
+
+    /* SIMPLIFIED Video Polaroid Style */
+    .video-polaroid {
+      width: 100%;
+      height: 600px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      border: 15px solid white;
+      box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.1),
+        inset 0 0 25px rgba(255, 255, 255, 0.6);
+      transition: all 0.6s ease;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+    }
+
+    .video-polaroid video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #000;
+    }
+
+    .polaroid-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.9rem;
+      text-align: center;
+      color: #8b001b;
+      line-height: 1.4;
+      padding: 0 15px;
+      background: linear-gradient(135deg, #8b001b, #b30024, #ff3366);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    /* ENHANCED: More Cherry Stickers with different colors */
+    .cherry-sticker {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow:
+        0 8px 25px rgba(179, 0, 36, 0.35),
+        0 4px 10px rgba(179, 0, 36, 0.2);
+      z-index: 2;
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      animation: stickerBounce 0.5s ease-out;
+    }
+
+    /* Different sticker styles */
+    .sticker-red { background: linear-gradient(135deg, #ff3366, #b30024); }
+    .sticker-pink { background: linear-gradient(135deg, #ff85a1, #ff3366); }
+    .sticker-rose { background: linear-gradient(135deg, #ffb6c1, #ff4d79); }
+    .sticker-cherry { background: linear-gradient(135deg, #b30024, #8b001b); }
+    .sticker-gold { background: linear-gradient(135deg, #ffd700, #ff8c00); }
+    .sticker-blue { background: linear-gradient(135deg, #4d94ff, #0066cc); }
+    .sticker-purple { background: linear-gradient(135deg, #9d4edd, #5a00cc); }
+
+    /* Top left stickers */
+    .cherry-sticker.top-left {
+      top: -15px;
+      right: auto;
+      left: -15px;
+    }
+
+    /* Bottom stickers */
+    .cherry-sticker.bottom {
+      top: auto;
+      bottom: -15px;
+      right: -15px;
+    }
+
+    .cherry-sticker.bottom-left {
+      top: auto;
+      bottom: -15px;
+      right: auto;
+      left: -15px;
+    }
+
+    @keyframes stickerBounce {
+      0% { transform: scale(0.8) rotate(-10deg); }
+      60% { transform: scale(1.2) rotate(5deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* 5 HANGING PHOTOS */
+    .hanging-photos-container {
+      position: relative;
+      height: 350px;
+      margin: 60px auto 80px;
+      max-width: 1200px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 0 20px;
+      overflow: visible;
+    }
+
+    .hanging-photo-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hanging-string {
+      width: 1.5px;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, #ff3366 30%, #ff85a1 70%, transparent);
+      animation: stringSwing 4s ease-in-out infinite;
+      transform-origin: top center;
+      filter: drop-shadow(0 2px 3px rgba(179, 0, 36, 0.3));
+      margin-bottom: 10px;
+    }
+
+    .hanging-photo-wrapper:nth-child(1) .hanging-string { animation-delay: 0s; }
+    .hanging-photo-wrapper:nth-child(2) .hanging-string { animation-delay: 0.5s; }
+    .hanging-photo-wrapper:nth-child(3) .hanging-string { animation-delay: 1s; }
+    .hanging-photo-wrapper:nth-child(4) .hanging-string { animation-delay: 0.7s; }
+    .hanging-photo-wrapper:nth-child(5) .hanging-string { animation-delay: 1.2s; }
+
+    @keyframes stringSwing {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    .hanging-photo {
+      width: 160px;
+      height: 200px;
+      background: white;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow:
+        0 25px 50px rgba(179, 0, 36, 0.3),
+        0 12px 30px rgba(179, 0, 36, 0.2),
+        inset 0 0 25px rgba(255, 255, 255, 0.9);
+      border: 10px solid white;
+      transform: rotate(var(--rotate, 0deg));
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hanging-photo-wrapper:nth-child(1) .hanging-photo { --rotate: -8deg; }
+    .hanging-photo-wrapper:nth-child(2) .hanging-photo { --rotate: 5deg; }
+    .hanging-photo-wrapper:nth-child(3) .hanging-photo { --rotate: -3deg; }
+    .hanging-photo-wrapper:nth-child(4) .hanging-photo { --rotate: 7deg; }
+    .hanging-photo-wrapper:nth-child(5) .hanging-photo { --rotate: -5deg; }
+
+    .hanging-photo:hover {
+      transform: rotate(0deg) translateY(-15px) scale(1.08);
+      box-shadow:
+        0 35px 70px rgba(179, 0, 36, 0.4),
+        0 18px 40px rgba(179, 0, 36, 0.3),
+        inset 0 0 30px rgba(255, 255, 255, 0.95);
+      z-index: 10;
+    }
+
+    .hanging-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      filter: sepia(0.1) brightness(1.05);
+      transition: all 0.4s ease;
+      background-color: #ffe6ea; /* Fallback background color */
+    }
+
+    /* Special class for hanging photos that are vertical */
+    .hanging-photo img.vertical-fit {
+      object-fit: contain;
+      background: linear-gradient(135deg, #ffe6ea, #ffccd5);
+    }
+
+    .hanging-photo:hover img {
+      filter: sepia(0) brightness(1.15) contrast(1.1);
+      transform: scale(1.05);
+    }
+
+    /* Luxury Header */
+    .luxury-header {
+      text-align: center;
+      padding: 100px 40px 60px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(25px);
+      border-radius: 45px;
+      margin: 40px auto 40px;
+      max-width: 1300px;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      box-shadow:
+        0 35px 80px rgba(179, 0, 36, 0.22),
+        0 20px 50px rgba(179, 0, 36, 0.18),
+        inset 0 0 60px rgba(255, 255, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-title {
+      font-size: 4.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #8b001b, #b30024, #ff3366, #ff85a1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 25px;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      text-shadow: 0 5px 20px rgba(179, 0, 36, 0.15);
+    }
+
+    .header-subtitle {
+      font-size: 1.8rem;
+      color: #b30024;
+      opacity: 0.95;
+      max-width: 850px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      font-family: 'Caveat', cursive;
+    }
+
+    /* Navigation */
+    .luxury-nav {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(25px);
+      padding: 15px 25px;
+      border-radius: 60px;
+      box-shadow:
+        0 25px 60px rgba(179, 0, 36, 0.3),
+        0 15px 40px rgba(179, 0, 36, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-btn {
+      background: linear-gradient(135deg, #ff3366, #b30024);
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(179, 0, 36, 0.5);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.5px;
+      min-width: 120px;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 20px 50px rgba(179, 0, 36, 0.8);
+    }
+
+    .nav-btn.back {
+      background: linear-gradient(135deg, #ff85a1, #ff3366);
+    }
+
+    /* Page Indicator */
+    .page-indicator {
+      position: fixed;
+      top: 50px;
+      right: 50px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(25px);
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 15px 40px rgba(179, 0, 36, 0.2);
+      font-weight: 800;
+      color: #8b001b;
+      z-index: 1000;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 3.8rem;
+      text-align: center;
+      background: linear-gradient(135deg, #8b001b, #b30024, #ff3366);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 60px;
+      font-weight: 900;
+      padding: 0 20px;
+      position: relative;
+      letter-spacing: -0.5px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* FIXED: Quote Cards - Only on specific pages */
+    .quote-card {
+      background: linear-gradient(145deg, #ffffff, #fffafa);
+      padding: 35px 40px;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(179, 0, 36, 0.15);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      min-height: 400px;
+      grid-column: span 1;
+    }
+
+    /* Make quote cards take full grid column */
+    .quote-card.full-width {
+      grid-column: span 3;
+      max-width: 1000px;
+      margin: 0 auto;
+      min-height: auto;
+    }
+
+    .quote-text {
+      font-size: 1.8rem;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-family: 'Caveat', cursive;
+      color: #5c0014;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .quote-author {
+      font-size: 1.2rem;
+      color: #b30024;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Emotional Letter */
+    .emotional-letter {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 250, 250, 0.99));
+      border-radius: 25px;
+      padding: 60px 70px;
+      margin: 50px auto;
+      max-width: 1000px;
+      box-shadow:
+        0 40px 100px rgba(179, 0, 36, 0.3),
+        0 25px 60px rgba(179, 0, 36, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 0 0 2px rgba(255, 255, 255, 0.7);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      position: relative;
+    }
+
+    .letter-content {
+      font-family: 'Caveat', cursive;
+      font-size: 1.9rem;
+      line-height: 1.9;
+      color: #5c0014;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+
+    .letter-signature {
+      text-align: right;
+      margin-top: 50px;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: #b30024;
+      font-weight: 800;
+      font-style: italic;
+      position: relative;
+      padding-top: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .pinterest-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .header-title { font-size: 3.8rem; }
+      .section-title { font-size: 3rem; }
+      .hanging-photos-container {
+        gap: 30px;
+      }
+      .hanging-photo {
+        width: 140px;
+        height: 180px;
+      }
+      .quote-card.full-width {
+        grid-column: span 2;
+      }
+      .video-polaroid {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pinterest-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-title { font-size: 2.8rem; }
+      .luxury-nav {
+        flex-direction: column;
+        width: 90%;
+        padding: 15px;
+        bottom: 20px;
+      }
+      .page { padding: 40px 20px; }
+      .emotional-letter { padding: 30px; }
+      .letter-content { font-size: 1.6rem; }
+      .section-title { font-size: 2.5rem; }
+      .nav-btn {
+        padding: 12px 20px;
+        min-width: 100px;
+        font-size: 1rem;
+      }
+      .hanging-photos-container {
+        height: 300px;
+        gap: 15px;
+        margin: 40px auto 60px;
+      }
+      .hanging-photo {
+        width: 110px;
+        height: 140px;
+      }
+      .hanging-string {
+        height: 80px;
+      }
+      .quote-card {
+        padding: 25px 30px;
+        min-height: 350px;
+      }
+      .quote-text {
+        font-size: 1.6rem;
+        padding: 0 10px;
+      }
+      .quote-card.full-width {
+        grid-column: span 1;
+      }
+      .video-polaroid {
+        height: 400px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Doodle Elements -->
+  <div class="doodle heart" style="top:5%; left:3%; animation-delay:0s;">💖</div>
+  <div class="doodle star" style="top:12%; right:4%; animation-delay:-2s;">⭐</div>
+  <div class="doodle flower" style="top:65%; left:2%; animation-delay:-4s;">🌸</div>
+  <div class="doodle cherry" style="top:30%; right:2%; animation-delay:-6s;">🍒</div>
+  <div class="doodle heart" style="top:80%; right:5%; animation-delay:-8s;">💕</div>
+  <div class="doodle star" style="top:45%; left:5%; animation-delay:-10s;">✨</div>
+
+  <!-- Floating Hearts & Bows (Background only) -->
+  <div id="floating-elements"></div>
+
+  <!-- PAGE 1: WELCOME WITH 5 HANGING PHOTOS -->
+  <div class="page active" id="page1">
+    <div class="page-indicator">1/8</div>
+
+    <div class="luxury-header">
+      <h1 class="header-title">Happy Birthday Ammatty! ✨</h1>
+      <p class="header-subtitle">"Five beautiful memories hanging from strings of friendship, celebrating the amazing person you are"</p>
+
+      <!-- 5 HANGING PHOTOS -->
+      <div class="hanging-photos-container">
+        <!-- Photo 1 -->
+        <div class="hanging-photo-wrapper">
+          <div class="hanging-string"></div>
+          <div class="hanging-photo">
+            <img src="WE.jpg" alt="Three friends" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display:flex;align-items:center;justify-content:center;color:#b30024;font-weight:600;\'>Friends Forever</div>'">
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="hanging-photo-wrapper">
+          <div class="hanging-string"></div>
+          <div class="hanging-photo">
+            <img src="11.jpg" alt="Beautiful you" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;color:#b30024;font-weight:600;\'>Beautiful You</div>'">
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="hanging-photo-wrapper">
+          <div class="hanging-string"></div>
+          <div class="hanging-photo">
+            <img src="22.jpg" alt="Your smile" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;color:#b30024;font-weight:600;\'>Your Smile</div>'">
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="hanging-photo-wrapper">
+          <div class="hanging-string"></div>
+          <div class="hanging-photo">
+            <img src="66.jpg" alt="Your joy" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;color:#b30024;font-weight:600;\'>Your Joy</div>'">
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="hanging-photo-wrapper">
+          <div class="hanging-string"></div>
+          <div class="hanging-photo">
+            <img src="WE6.jpg" alt="Your strength" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;color:#b30024;font-weight:600;\'>Your Strength</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pinterest-grid">
+      <div class="quote-card full-width">
+        <div class="quote-text">"Like these five precious photos hanging from strings of love, our friendship is a beautiful collection of moments suspended in time. Each photo represents a memory we cherish, a smile we adore, and a moment that brought us closer."</div>
+        <div class="quote-author">- Your Forever Friends</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: SOLO PHOTOS 1 -->
+  <div class="page" id="page2">
+    <div class="page-indicator">2/8</div>
+    <h2 class="section-title">The Star We Admire 🌟</h2>
+
+    <div class="pinterest-grid">
+      <div class="polaroid-card">
+        <img src="60.jpeg" alt="Beautiful you" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Beautiful You</div>'">
+        <div class="polaroid-caption">Your light touches everyone around you</div>
+        <div class="cherry-sticker sticker-red">Beautiful</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="8.jpeg" alt="Your smile" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Your Smile</div>'">
+        <div class="polaroid-caption">A smile that brightens our world</div>
+        <div class="cherry-sticker sticker-pink">Smile</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="88.jpeg" alt="Your spirit" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Your Spirit</div>'">
+        <div class="polaroid-caption">Incredible spirit, beautiful soul</div>
+        <div class="cherry-sticker sticker-cherry">Spirit</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="44.jpeg" alt="Your joy" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Your Joy</div>'">
+        <div class="polaroid-caption">Pure joy in every moment</div>
+        <div class="cherry-sticker bottom-left sticker-pink">Positive</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="77.jpg" alt="Your beauty" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Your Beauty</div>'">
+        <div class="polaroid-caption">Beauty that comes from within</div>
+        <div class="cherry-sticker bottom sticker-cherry">Gorgeous</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="20.jpeg" alt="Your growth" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Your Growth</div>'">
+        <div class="polaroid-caption">Growing more amazing every day</div>
+        <div class="cherry-sticker sticker-pink">Growth</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: CHILDHOOD JOURNEY TO NOW -->
+  <div class="page" id="page3">
+    <div class="page-indicator">3/8</div>
+    <h2 class="section-title">From Little Star to Shining Woman 🌟</h2>
+
+    <div class="pinterest-grid">
+      <!-- Childhood beginnings -->
+      <div class="polaroid-card">
+        <img src="50.jpeg" alt="Young beginnings" class="polaroid-image vertical-fit" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Young Beginnings</div>'">
+        <div class="polaroid-caption">Where your beautiful journey began</div>
+        <div class="cherry-sticker top-left sticker-rose">Little Star</div>
+      </div>
+
+      <!-- Growing up phase -->
+      <div class="polaroid-card">
+        <img src="14.jpeg" alt="Blossoming years" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Blossoming Years</div>'">
+        <div class="polaroid-caption">Blossoming into who you are today</div>
+        <div class="cherry-sticker sticker-pink">Blooming</div>
+        <div class="cherry-sticker bottom sticker-red">Teen Years</div>
+      </div>
+
+      <!-- Strength developing -->
+      <div class="polaroid-card">
+        <img src="99.jpeg" alt="Finding strength" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Finding Strength</div>'">
+        <div class="polaroid-caption">Strength that grew with each challenge</div>
+        <div class="cherry-sticker sticker-cherry">Resilient</div>
+      </div>
+
+      <!-- Current beautiful you -->
+      <div class="polaroid-card">
+        <img src="18.jpeg" alt="Beautiful woman today" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Beautiful Woman</div>'">
+        <div class="polaroid-caption">The incredible woman you've become</div>
+        <div class="cherry-sticker sticker-rose">Amazing</div>
+        <div class="cherry-sticker bottom sticker-pink">Journey Complete</div>
+      </div>
+
+      <div class="quote-card full-width">
+        <div class="quote-text">"We see the beautiful journey from that little girl to the amazing woman you are today. Every step, every challenge, every triumph has shaped you into the incredible person we're honored to call our friend."</div>
+        <div class="quote-author">- Witnessing Your Beautiful Evolution</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: CHILDHOOD MEMORIES -->
+  <div class="page" id="page4">
+    <div class="page-indicator">4/8</div>
+    <h2 class="section-title">Precious Beginnings 🌈</h2>
+
+    <div class="pinterest-grid">
+      <div class="polaroid-card">
+        <img src="amm.jpg" alt="Childhood memories" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Childhood Days</div>'">
+        <div class="polaroid-caption">Little star in the making</div>
+        <div class="cherry-sticker sticker-pink">Childhood</div>
+      </div>
+
+      <div class="quote-card full-width">
+        <div class="quote-text">"We look at your childhood photos and wish we could have been there - to protect you, to laugh with you, to be your first best friends."</div>
+        <div class="quote-author">- Your Protectors</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="we4.jpeg" alt="Growing up" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Growing Up</div>'">
+        <div class="polaroid-caption">Growing into amazing you</div>
+        <div class="cherry-sticker bottom-left sticker-cherry">Journey</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 5: TOGETHER PHOTOS 1 -->
+  <div class="page" id="page5">
+    <div class="page-indicator">5/8</div>
+    <h2 class="section-title">Our Beautiful Trio 🎀</h2>
+
+    <div class="pinterest-grid">
+      <div class="polaroid-card">
+        <img src="WE.jpg" alt="Three friends" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Three Friends</div>'">
+        <div class="polaroid-caption">Three hearts intertwined forever</div>
+        <div class="cherry-sticker sticker-red">Trio</div>
+        <div class="cherry-sticker top-left sticker-pink">Besties</div>
+        <div class="cherry-sticker bottom sticker-pink">Friends Forever</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="WE4.jpg" alt="Our bond" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Our Bond</div>'">
+        <div class="polaroid-caption">Unbreakable bond of friendship</div>
+        <div class="cherry-sticker sticker-cherry">Bond</div>
+        <div class="cherry-sticker top-left sticker-rose">Connected</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="WE5.jpg" alt="Our laughter" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Our Laughter</div>'">
+        <div class="polaroid-caption">Laughter that echoes forever</div>
+        <div class="cherry-sticker sticker-pink">Laughter</div>
+        <div class="cherry-sticker bottom sticker-pink">Happy Times</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="we33.jpeg" alt="Our moments" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Our Moments</div>'">
+        <div class="polaroid-caption">Precious moments captured</div>
+        <div class="cherry-sticker sticker-rose">Moments</div>
+        <div class="cherry-sticker top-left sticker-red">Memories</div>
+      </div>
+
+      <div class="polaroid-card">
+        <img src="we42.jpeg" alt="Beautiful together" class="polaroid-image" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:320px;background:linear-gradient(135deg,#ffe6ea,#ffccd5);display=flex;align-items:center;justify-content:center;border-radius:12px;border:15px solid white;color:#b30024;font-size:1.5rem;font-weight:600;\'>Beautiful Together</div>'">
+        <div class="polaroid-caption">Beautiful moments together</div>
+        <div class="cherry-sticker sticker-red">Together</div>
+        <div class="cherry-sticker top-left sticker-rose">Perfect Trio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 6: SIMPLIFIED VIDEO PAGE -->
+  <div class="page" id="page6">
+    <div class="page-indicator">6/8</div>
+    <h2 class="section-title">Ultra HD Video Memory 🎥✨</h2>
+
+    <div class="pinterest-grid">
+      <!-- Simple Video Polaroid -->
+      <div class="polaroid-card" style="grid-column: 1 / span 3; max-width: 1000px; margin: 0 auto;">
+        <div class="video-polaroid">
+          <video id="chaku-video" playsinline controls preload="auto">
+            <source src="chaku.mp4" type="video/mp4">
+            <source src="chaku.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="polaroid-caption">Ultra HD moments captured forever in crystal clear quality</div>
+        <div class="cherry-sticker sticker-purple">Ultra HD 🎥</div>
+        <div class="cherry-sticker top-left sticker-blue">4K Ready</div>
+        <div class="cherry-sticker bottom sticker-gold">Watch in Ultra HD!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 7: EMOTIONAL LETTER -->
+  <div class="page" id="page7">
+    <div class="page-indicator">7/8</div>
+    <h2 class="section-title">Our Heart to Yours 💌</h2>
+
+    <div class="emotional-letter">
+      <div class="letter-content">
+        Dearest Ammatty,<br><br>
+
+        On your special day, we want you to know something important: you are loved beyond measure, cherished beyond words, and valued beyond comparison.<br><br>
+
+        We see you - not just the smiling photos and happy moments, but the real you. The strong woman who faces challenges head-on, the kind soul who puts others first, the beautiful friend who makes our world complete.<br><br>
+
+        Our friendship isn't perfect because we're perfect people. It's perfect because despite our flaws, despite the miles, despite everything life throws at us - we choose each other. Every single day.<br><br>
+
+        We promise to be your safe place when the world feels too heavy. We promise to be your loudest cheerleaders when you succeed. We promise to be your quiet support when you need to rest. We promise to love you at your best and love you harder at your worst.<br><br>
+
+        Happy Birthday to the woman who makes our friendship feel like home. May this year bring you everything your heart desires and more.<br><br>
+
+        All our love, forever and always...
+      </div>
+      <div class="letter-signature">
+        Your Best Friends Forever<br>
+        💖 Your Safe Place 💖
+      </div>
+    </div>
+
+    <div class="pinterest-grid" style="margin-top: 60px;">
+      <div class="quote-card full-width">
+        <div class="quote-text">"Here's to more birthdays together, more memories to make, more laughter to share, and more love to give. We'll be there for it all - the big moments and the small ones, the celebrations and the quiet times."</div>
+        <div class="quote-author">- Always by Your Side</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 8: FUTURE DREAMS -->
+  <div class="page" id="page8">
+    <div class="page-indicator">8/8</div>
+    <h2 class="section-title">Our Beautiful Future Awaits 🌟</h2>
+
+    <div class="pinterest-grid">
+      <div class="quote-card full-width">
+        <div class="quote-text">"We can't wait to watch you achieve every dream, celebrate every victory, and overcome every challenge. We'll be there - in the front row, cheering the loudest, crying happy tears, and reminding you how incredible you are."</div>
+        <div class="quote-author">- Your Future Cheerleaders</div>
+      </div>
+
+      <div class="polaroid-card">
+        <div style="height: 320px; background: linear-gradient(135deg, #ffe6ea, #ffccd5); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 12px; border: 15px solid white; padding: 30px;">
+          <div style="font-size: 5rem; color: #ff3366; margin-bottom: 20px;">🎯</div>
+          <div style="font-size: 1.8rem; color: #b30024; text-align: center;">Dreams Coming True</div>
+          <div style="font-size: 1.4rem; color: #8b001b; text-align: center; margin-top: 15px;">We believe in you, always</div>
+        </div>
+        <div class="polaroid-caption">Your brightest future awaits</div>
+        <div class="cherry-sticker sticker-gold">Dreams</div>
+        <div class="cherry-sticker bottom-left sticker-red">Future</div>
+      </div>
+
+      <div class="quote-card full-width">
+        <div class="quote-text">"Here's to growing old together, to inside jokes that never get old, to friendship that only gets better with time. No matter what the future holds, we'll face it together - three hearts beating as one."</div>
+        <div class="quote-author">- Forever Yours</div>
+      </div>
+
+      <div class="luxury-header" style="margin-top: 40px; padding: 60px 40px;">
+        <h1 class="header-title" style="font-size: 3.5rem;">Happy Birthday Ammatty! 🎂</h1>
+        <p class="header-subtitle">May all your dreams come true and may our friendship continue to grow stronger with each passing year. We love you endlessly! 💕</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="luxury-nav">
+    <button class="nav-btn back" onclick="prevPage()">← Back</button>
+    <button class="nav-btn" onclick="nextPage()">Next →</button>
+  </div>
+
+  <script>
+    let currentPage = 1;
+    const totalPages = 8;
+
+    // Create floating hearts and bows background
+    function createFloatingElements() {
+      const container = document.getElementById('floating-elements');
+      const hearts = ['💖', '💕', '💗', '💓', '💞', '❤️'];
+      const bows = ['🎀'];
+
+      // Create hearts
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+        heart.style.animationDelay = -(Math.random() * 30) + 's';
+        heart.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        container.appendChild(heart);
+      }
+
+      // Create bows
+      for (let i = 0; i < 6; i++) {
+        const bow = document.createElement('div');
+        bow.className = 'floating-bow';
+        bow.innerHTML = bows[0];
+        bow.style.left = Math.random() * 100 + '%';
+        bow.style.fontSize = (Math.random() * 1.5 + 2) + 'rem';
+        bow.style.animationDelay = -(Math.random() * 30) + 's';
+        bow.style.animationDuration = (Math.random() * 10 + 20) + 's';
+        container.appendChild(bow);
+      }
+    }
+
+    function showPage(pageNumber) {
+      // Hide all pages
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => {
+        page.classList.remove('active');
+      });
+
+      // Show current page
+      const targetPage = document.getElementById('page' + pageNumber);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      // Update page indicator
+      const indicators = document.querySelectorAll('.page-indicator');
+      indicators.forEach(indicator => {
+        indicator.textContent = `${pageNumber}/${totalPages}`;
+      });
+
+      // Pause video when leaving page 6
+      if (currentPage === 6 && pageNumber !== 6) {
+        const video = document.getElementById('chaku-video');
+        if (video) {
+          video.pause();
+        }
+      }
+
+      currentPage = pageNumber;
+      window.scrollTo(0, 0);
+    }
+
+    function nextPage() {
+      if (currentPage < totalPages) {
+        showPage(currentPage + 1);
+      } else {
+        showPage(1); // Loop back to first page
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        showPage(currentPage - 1);
+      } else {
+        showPage(totalPages); // Loop to last page
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight' || event.key === ' ') {
+        event.preventDefault();
+        nextPage();
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        prevPage();
+      }
+    });
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create floating background elements
+      createFloatingElements();
+
+      // Show first page
+      showPage(1);
+    });
+  </script>
+</body>
+</html>
